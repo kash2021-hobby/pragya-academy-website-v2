@@ -93,10 +93,21 @@
     background-color: hsl(var(--soft-bg));
   }
   .btn-orange {
-    @apply bg-orange text-primary-foreground font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:bg-orange-dark hover:shadow-lg hover:-translate-y-0.5;
+    @apply font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
+    background-color: hsl(var(--orange));
+    color: hsl(0 0% 100%);
+  }
+  .btn-orange:hover {
+    background-color: hsl(var(--orange-dark));
   }
   .btn-orange-outline {
-    @apply border-2 border-orange text-orange font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:bg-orange hover:text-primary-foreground;
+    @apply border-2 font-semibold px-8 py-3 rounded-xl transition-all duration-300;
+    border-color: hsl(var(--orange));
+    color: hsl(var(--orange));
+  }
+  .btn-orange-outline:hover {
+    background-color: hsl(var(--orange));
+    color: hsl(0 0% 100%);
   }
   .card-hover {
     @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
