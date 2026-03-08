@@ -5,25 +5,25 @@ import { User } from 'lucide-react';
 import mukutKalitaImg from '@/assets/mukut-kalita.webp';
 
 const facultyData = [
-  { name: 'Dr. Mukut Kalita', subject: 'Chemistry', image: mukutKalitaImg },
-  { name: 'Sahjahan Ali', subject: 'Chemistry' },
-  { name: 'Imran Choudhury', subject: 'Physics' },
-  { name: 'Bhaskar Deep Kashyap', subject: 'Assamese' },
-  { name: 'Firoza Begum', subject: 'Assamese' },
-  { name: 'Kangkana Kundinya', subject: 'English' },
-  { name: 'Mahananda Barua', subject: 'English' },
-  { name: 'Mehdi Alam Mustafee', subject: 'Mathematics' },
-  { name: 'Khanindra Kalita', subject: 'Mathematics' },
-  { name: 'Sajidul Islam', subject: 'Zoology' },
-  { name: 'Parag Sarma', subject: 'Assamese' },
-  { name: 'Kamal Jyoti Deka', subject: 'Political Science' },
-  { name: 'Nishigandha Kashyap', subject: 'Geography' },
-  { name: 'Sweety Deka', subject: 'Geography' },
-  { name: 'Archana Deka', subject: 'Logic & Philosophy' },
-  { name: 'Sonia Nath', subject: 'Anthropology' },
-  { name: 'Mitu Rani Bora', subject: 'Education' },
-  { name: 'Jit Bhuyan', subject: 'Accountancy' },
-  { name: 'Rakesh Deka', subject: 'Finance' },
+  { name: 'Dr. Mukut Kalita', subject: 'Chemistry', qualification: 'M.Sc, Ph.D', experience: '19 Years', image: mukutKalitaImg, details: 'Worked at Shrimanta Shankar Academy, Dispur; CIPET, Changsari; Anundoram Borooah Academy, Pathsala etc.' },
+  { name: 'Sahjahan Ali', subject: 'Chemistry', qualification: 'B. Pharm', experience: '3 Years' },
+  { name: 'Imran Choudhury', subject: 'Physics', qualification: 'M.Sc', experience: '5 Years' },
+  { name: 'Bhaskar Deep Kashyap', subject: 'Assamese', qualification: 'MA, D.El.Ed.', experience: '15 Years' },
+  { name: 'Firoza Begum', subject: 'Assamese', qualification: 'MA', experience: '26 Years' },
+  { name: 'Kangkana Kundinya', subject: 'English', qualification: 'MA, B. Ed', experience: '5 Years' },
+  { name: 'Mahananda Barua', subject: 'English', qualification: 'MA, B. Ed', experience: '25 Years' },
+  { name: 'Mehdi Alam Mustafee', subject: 'Mathematics', qualification: 'M.Sc', experience: '7 Years' },
+  { name: 'Khanindra Kalita', subject: 'Mathematics', qualification: 'M.Sc, B. Ed', experience: '5 Years' },
+  { name: 'Sajidul Islam', subject: 'Zoology', qualification: 'M.Sc, B. Ed', experience: '3 Years' },
+  { name: 'Parag Sarma', subject: 'Assamese', qualification: 'MA', experience: '10 Years' },
+  { name: 'Kamal Jyoti Deka', subject: 'Political Science', qualification: 'MA, D.El.Ed.', experience: '9 Years' },
+  { name: 'Nishigandha Kashyap', subject: 'Geography', qualification: 'MA, D.El.Ed.', experience: '5 Years' },
+  { name: 'Sweety Deka', subject: 'Geography', qualification: 'MA', experience: '6 Years' },
+  { name: 'Archana Deka', subject: 'Logic & Philosophy', qualification: 'MA, D.El.Ed.', experience: '6 Years' },
+  { name: 'Sonia Nath', subject: 'Anthropology', qualification: 'MA', experience: '2 Years' },
+  { name: 'Mitu Rani Bora', subject: 'Education', qualification: 'MA, D.El.Ed, B.Ed', experience: '6 Years' },
+  { name: 'Jit Bhuyan', subject: 'Accountancy', qualification: 'M.Com', experience: '6 Years' },
+  { name: 'Rakesh Deka', subject: 'Finance', qualification: 'M.Com', experience: '8 Years' },
 ];
 
 const Faculties = () => {
@@ -34,25 +34,24 @@ const Faculties = () => {
 
       <section className="section-padding">
         <div className="container-main">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {facultyData.map((f, i) => (
-              <div key={i} className="scroll-reveal group bg-card rounded-xl shadow-md overflow-hidden card-hover">
-                <div className="aspect-[3/4] bg-secondary flex items-center justify-center relative overflow-hidden">
+              <div key={i} className="scroll-reveal flex flex-col bg-card rounded-xl shadow-md overflow-hidden">
+                <div className="aspect-[3/4] bg-secondary flex items-center justify-center overflow-hidden">
                   {f.image ? (
                     <img src={f.image} alt={f.name} className="w-full h-full object-cover" />
                   ) : (
                     <User size={64} className="text-muted-foreground/30" />
                   )}
-                  <div className="absolute inset-0 bg-navy/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                    <div className="text-center text-primary-foreground">
-                      <p className="text-sm font-medium">Experienced & Dedicated</p>
-                      <p className="text-xs text-primary-foreground/70 mt-1">Dept. of {f.subject}</p>
-                    </div>
-                  </div>
                 </div>
-                <div className="p-4 text-center">
-                  <h3 className="font-heading text-sm font-bold text-foreground">{f.name}</h3>
-                  <p className="text-orange text-xs font-medium mt-1">{f.subject}</p>
+                <div className="p-4 flex flex-col flex-grow">
+                  <h3 className="font-heading text-base font-bold text-foreground">{f.name}</h3>
+                  <p className="text-orange text-sm font-medium mt-1">{f.subject}</p>
+                  <p className="text-muted-foreground text-sm mt-1">{f.qualification}</p>
+                  <p className="text-muted-foreground/70 text-xs mt-1">Teaching Experience: {f.experience}</p>
+                  {f.details && (
+                    <p className="text-muted-foreground/60 text-xs mt-2 italic">{f.details}</p>
+                  )}
                 </div>
               </div>
             ))}
