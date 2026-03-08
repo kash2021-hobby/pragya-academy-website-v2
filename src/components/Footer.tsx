@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
 const Footer = () => {
   return (
@@ -9,6 +10,7 @@ const Footer = () => {
           {/* Logo & tagline */}
           <div>
             <div className="flex items-center gap-2 mb-4">
+              <img src={logo} alt="Pragya Academy Logo" className="w-9 h-9 md:w-10 md:h-10 object-contain" />
               <span className="font-heading text-2xl font-bold text-primary-foreground">Pragya</span>
               <span className="font-heading text-2xl font-bold text-orange">Academy</span>
             </div>
