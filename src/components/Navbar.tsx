@@ -96,7 +96,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 text-navy">
+        <button onClick={() => setMobileOpen(!mobileOpen)} className={`lg:hidden p-2 ${scrolled ? 'text-navy' : 'text-primary-foreground'}`}>
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
