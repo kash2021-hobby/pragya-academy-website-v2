@@ -289,37 +289,28 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding bg-soft overflow-hidden">
+      <section className="section-padding bg-soft">
         <div className="container-main">
           <div className="text-center mb-12 scroll-reveal">
             <p className="text-orange font-semibold text-sm uppercase tracking-wider mb-2">Why Choose Us</p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">Our Key Strengths</h2>
           </div>
           
-          {/* Animated horizontal scrolling cards */}
-          <div className="relative">
-            <div className="flex gap-6 animate-scroll-cards">
-              {/* First set of cards */}
-              {whyChoose.map((item, i) => (
-                <div key={`first-${i}`} className="flex-shrink-0 w-72 bg-card rounded-xl shadow-md p-6 text-center card-hover">
-                  <div className="w-16 h-16 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-4">
-                    <item.icon size={28} className="text-orange" />
-                  </div>
-                  <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm">{item.desc}</p>
+          {/* Responsive Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {whyChoose.map((item, i) => (
+              <div 
+                key={i} 
+                className="scroll-reveal bg-card rounded-xl shadow-md p-6 text-center card-hover"
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                <div className="w-16 h-16 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-4">
+                  <item.icon size={28} className="text-orange" />
                 </div>
-              ))}
-              {/* Duplicate set for seamless loop */}
-              {whyChoose.map((item, i) => (
-                <div key={`second-${i}`} className="flex-shrink-0 w-72 bg-card rounded-xl shadow-md p-6 text-center card-hover">
-                  <div className="w-16 h-16 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-4">
-                    <item.icon size={28} className="text-orange" />
-                  </div>
-                  <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm">{item.desc}</p>
-                </div>
-              ))}
-            </div>
+                <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-sm">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
