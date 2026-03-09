@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import { Users, Monitor, Laptop, Shield, BookOpen, GraduationCap, FlaskConical, Trophy, UserCheck, GitBranch, Mail, Camera, Home, Heart, Presentation } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useCountUp } from '@/hooks/useCountUp';
@@ -25,7 +26,20 @@ const whyChoose = [
 ];
 
 const Index = () => {
+  const heroImgRef = useRef<HTMLImageElement>(null);
+
   useScrollReveal();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroImgRef.current) {
+        heroImgRef.current.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const streams = useCountUp(3);
   const professors = useCountUp(30);
   const trophies = useCountUp(30);
@@ -34,9 +48,9 @@ const Index = () => {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center">
-        <img src={heroCampus} alt="Pragya Academy Campus" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-navy/70" />
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <img ref={heroImgRef} src={heroCampus} alt="Pragya Academy Campus" className="absolute inset-0 w-full h-[120%] object-cover will-change-transform" />
+        <div className="absolute inset-0 bg-navy/80" />
         <div className="relative z-10 container-main px-4 sm:px-6 lg:px-8 pt-20">
           <div className="max-w-2xl">
             <p className="text-orange font-semibold tracking-wider uppercase text-sm mb-4">Welcome to Pragya Academy</p>
