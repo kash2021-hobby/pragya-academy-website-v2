@@ -3,9 +3,9 @@ import { Users, Monitor, Laptop, Shield, BookOpen, GraduationCap, FlaskConical, 
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useCountUp } from '@/hooks/useCountUp';
 import heroCampus from '@/assets/hero-campus.jpg';
-import campus1 from '@/assets/campus-1.jpg';
-import campus2 from '@/assets/campus-2.jpg';
-import campus3 from '@/assets/campus-3.jpg';
+import campus1 from '@/assets/gallery-1.webp';
+import campus2 from '@/assets/gallery-2.webp';
+import campus3 from '@/assets/gallery-10.webp';
 
 const services = [
   { icon: UserCheck, title: 'Qualified Staff', desc: 'Powered by highly qualified and dedicated faculty members.' },
