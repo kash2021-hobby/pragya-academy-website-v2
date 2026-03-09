@@ -163,6 +163,50 @@ const Index = () => {
         </div>
       </section>
 
+      {/* About Snippet */}
+      <section className="section-padding">
+        <div className="container-main">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="scroll-reveal grid grid-cols-2 gap-4">
+              <img src={campus1} alt="Campus" className="rounded-xl shadow-md col-span-1 h-48 md:h-64 object-cover w-full" />
+              <img src={campus2} alt="Classroom" className="rounded-xl shadow-md col-span-1 h-48 md:h-64 object-cover w-full mt-8" />
+              <img src={campus3} alt="Lab" className="rounded-xl shadow-md col-span-2 h-48 md:h-56 object-cover w-full" />
+            </div>
+            <div className="scroll-reveal">
+              <p className="text-orange font-semibold text-sm uppercase tracking-wider mb-2">About Us</p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">Welcome To Pragya Academy</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Pragya Academy, Baihata Chariali was established in 2017. Classes are conducted in both Assamese and English languages. Our dedicated team will lead the students towards an ambitious future.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                We offer comprehensive education across Science, Arts, and Commerce streams with experienced faculty and modern facilities.
+              </p>
+              <Link to="/about" className="btn-orange inline-block">Learn More</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="bg-navy py-12 md:py-16">
+        <div className="container-main px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { ref: streams.ref, count: streams.count, label: 'Streams', icon: GitBranch },
+              { ref: professors.ref, count: professors.count, label: 'Experienced Professors', icon: Users, suffix: '+' },
+              { ref: trophies.ref, count: trophies.count, label: 'Trophy Won', icon: Trophy, suffix: '+' },
+              { ref: students.ref, count: students.count, label: 'Student Enrolled', icon: GraduationCap, suffix: '+' },
+            ].map((stat, i) => (
+              <div key={i} ref={stat.ref} className="text-primary-foreground">
+                <stat.icon size={32} className="text-orange mx-auto mb-3" />
+                <div className="font-heading text-3xl md:text-4xl font-bold">{stat.count}{stat.suffix}</div>
+                <div className="text-primary-foreground/70 text-sm mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Consistent Academic Excellence Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-main">
@@ -208,8 +252,8 @@ const Index = () => {
               </button>
             </div>
 
-            {/* Tab Content */}
-            <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
+            {/* Tab Content - Centered with max width for desktop */}
+            <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8">
               {activeTab === 'achievers' && (
                 <div className="animate-fade-in">
                   <img
@@ -240,50 +284,6 @@ const Index = () => {
                 </div>
               )}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Snippet */}
-      <section className="section-padding">
-        <div className="container-main">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="scroll-reveal grid grid-cols-2 gap-4">
-              <img src={campus1} alt="Campus" className="rounded-xl shadow-md col-span-1 h-48 md:h-64 object-cover w-full" />
-              <img src={campus2} alt="Classroom" className="rounded-xl shadow-md col-span-1 h-48 md:h-64 object-cover w-full mt-8" />
-              <img src={campus3} alt="Lab" className="rounded-xl shadow-md col-span-2 h-48 md:h-56 object-cover w-full" />
-            </div>
-            <div className="scroll-reveal">
-              <p className="text-orange font-semibold text-sm uppercase tracking-wider mb-2">About Us</p>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">Welcome To Pragya Academy</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Pragya Academy, Baihata Chariali was established in 2017. Classes are conducted in both Assamese and English languages. Our dedicated team will lead the students towards an ambitious future.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                We offer comprehensive education across Science, Arts, and Commerce streams with experienced faculty and modern facilities.
-              </p>
-              <Link to="/about" className="btn-orange inline-block">Learn More</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="bg-navy py-12 md:py-16">
-        <div className="container-main px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { ref: streams.ref, count: streams.count, label: 'Streams', icon: GitBranch },
-              { ref: professors.ref, count: professors.count, label: 'Experienced Professors', icon: Users, suffix: '+' },
-              { ref: trophies.ref, count: trophies.count, label: 'Trophy Won', icon: Trophy, suffix: '+' },
-              { ref: students.ref, count: students.count, label: 'Student Enrolled', icon: GraduationCap, suffix: '+' },
-            ].map((stat, i) => (
-              <div key={i} ref={stat.ref} className="text-primary-foreground">
-                <stat.icon size={32} className="text-orange mx-auto mb-3" />
-                <div className="font-heading text-3xl md:text-4xl font-bold">{stat.count}{stat.suffix}</div>
-                <div className="text-primary-foreground/70 text-sm mt-1">{stat.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
