@@ -39,11 +39,11 @@ const Navbar = () => {
   const isAcademicActive = location.pathname === '/academic';
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/95 backdrop-blur-md shadow-lg' : 'bg-navy'}`}>
       <div className="container-main flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 md:h-20">
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="Pragya Academy Logo" className="w-9 h-9 md:w-10 md:h-10 object-contain" />
-          <span className="font-heading text-xl md:text-2xl font-bold text-navy">Pragya</span>
+          <span className={`font-heading text-xl md:text-2xl font-bold ${scrolled ? 'text-navy' : 'text-primary-foreground'}`}>Pragya</span>
           <span className="font-heading text-xl md:text-2xl font-bold text-orange">Academy</span>
         </Link>
 
@@ -56,7 +56,7 @@ const Navbar = () => {
                   className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
                     isAcademicActive
                       ? 'text-orange'
-                      : scrolled ? 'text-foreground hover:text-orange' : 'text-navy hover:text-orange'
+                    : scrolled ? 'text-foreground hover:text-orange' : 'text-primary-foreground hover:text-orange'
                   }`}
                 >
                   {link.label}
@@ -83,7 +83,7 @@ const Navbar = () => {
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
                   location.pathname === link.to
                     ? 'text-orange'
-                    : scrolled ? 'text-foreground hover:text-orange' : 'text-navy hover:text-orange'
+                    : scrolled ? 'text-foreground hover:text-orange' : 'text-primary-foreground hover:text-orange'
                 }`}
               >
                 {link.label}
@@ -96,7 +96,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 text-navy">
+        <button onClick={() => setMobileOpen(!mobileOpen)} className={`lg:hidden p-2 ${scrolled ? 'text-navy' : 'text-primary-foreground'}`}>
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
