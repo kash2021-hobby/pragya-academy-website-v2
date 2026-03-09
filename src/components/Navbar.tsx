@@ -83,7 +83,7 @@ const Navbar = () => {
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
                   location.pathname === link.to
                     ? 'text-orange'
-                    : scrolled ? 'text-foreground hover:text-orange' : 'text-navy hover:text-orange'
+                    : scrolled ? 'text-foreground hover:text-orange' : 'text-primary-foreground hover:text-orange'
                 }`}
               >
                 {link.label}
