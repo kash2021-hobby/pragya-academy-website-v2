@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Users, Monitor, Laptop, Shield, BookOpen, GraduationCap, FlaskConical, Trophy, UserCheck, GitBranch, Mail, Camera, Home, Heart, Presentation } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useCountUp } from '@/hooks/useCountUp';
@@ -7,6 +7,8 @@ import heroCampus from '@/assets/hero-campus.webp';
 import campus1 from '@/assets/gallery-1.webp';
 import campus2 from '@/assets/gallery-2.webp';
 import campus3 from '@/assets/gallery-10.webp';
+
+const heroImages = [heroCampus, campus1, campus3];
 
 const services = [
   { icon: UserCheck, title: 'Qualified Staff', desc: 'Powered by highly qualified and dedicated faculty members.' },
@@ -26,19 +28,45 @@ const whyChoose = [
 ];
 
 const Index = () => {
-  const heroImgRef = useRef<HTMLImageElement>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   useScrollReveal();
 
+  // Auto-play slider
   useEffect(() => {
-    const handleScroll = () => {
-      if (heroImgRef.current) {
-        heroImgRef.current.style.transform = `translateY(${window.scrollY * 0.5}px)`;
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
   }, []);
+
+  // Touch handlers for mobile swipe
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }
+    if (isRightSwipe) {
+      setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    }
+  };
 
   const streams = useCountUp(3);
   const professors = useCountUp(30);
@@ -47,42 +75,84 @@ const Index = () => {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <img ref={heroImgRef} src={heroCampus} alt="Pragya Academy Campus" className="absolute inset-0 w-full h-[120%] object-cover will-change-transform" />
-        <div className="absolute inset-0 bg-navy/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/40" />
-        <div className="relative z-10 container-main px-4 sm:px-6 lg:px-8 pt-20">
-          <div className="max-w-2xl">
-            <p className="text-orange font-semibold tracking-wider uppercase text-sm mb-4">Welcome to Pragya Academy</p>
-            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}>
+      {/* Hero Slider */}
+      <section 
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        {/* Background Images with Ken Burns Effect */}
+        {heroImages.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <div className="absolute inset-0 animate-ken-burns">
+              <img 
+                src={img} 
+                alt={`Pragya Academy ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        ))}
+        
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/45" />
+        
+        {/* Centered Content */}
+        <div className="relative z-10 container-main px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-orange font-semibold tracking-wider uppercase text-xs sm:text-sm mb-3 sm:mb-4 animate-fade-in">
+              Welcome to Pragya Academy
+            </p>
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6 animate-fade-in-up" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>
               Empowering Learners for <span className="text-orange">Tomorrow</span>
             </h1>
-            <p className="text-primary-foreground/80 text-lg md:text-xl mb-8 max-w-xl">
+            <p className="text-white/90 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto animate-fade-in-up-delay">
               Quality education in Science, Arts & Commerce since 2017. Building ambitious futures with dedication.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/courses" className="btn-orange text-base">Get Started</Link>
-              <Link to="/about" className="btn-orange-outline !border-primary-foreground !text-primary-foreground hover:!bg-primary-foreground hover:!text-navy text-base">Learn More</Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up-delay-2">
+              <Link to="/courses" className="btn-orange text-base w-full sm:w-auto">Get Started</Link>
+              <Link to="/about" className="btn-orange-outline !border-white !text-white hover:!bg-white hover:!text-navy text-base w-full sm:w-auto">Learn More</Link>
             </div>
           </div>
         </div>
+
+        {/* Slider Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentSlide ? 'bg-orange w-8' : 'bg-white/50 hover:bg-white/80'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </section>
 
-      {/* Service Cards */}
+      {/* Service Cards with Alternating Colors */}
       <section className="relative z-10 -mt-16 md:-mt-20 container-main px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s, i) => (
             <div 
               key={i} 
-              className="scroll-reveal bg-card rounded-xl shadow-lg p-6 card-hover" 
+              className={`scroll-reveal rounded-xl shadow-md p-6 transition-all duration-300 hover:shadow-xl ${
+                i % 2 === 0 ? 'bg-navy/5' : 'bg-orange/5'
+              }`}
               style={{ transitionDelay: `${i * 150}ms` }}
             >
               <div className="w-12 h-12 rounded-lg bg-orange/10 flex items-center justify-center mb-4">
                 <s.icon size={24} className="text-orange" />
               </div>
-              <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{s.title}</h3>
-              <p className="text-muted-foreground text-sm">{s.desc}</p>
+              <h3 className="font-heading text-lg font-semibold text-navy mb-2">{s.title}</h3>
+              <p className="text-navy/80 text-sm">{s.desc}</p>
             </div>
           ))}
         </div>
