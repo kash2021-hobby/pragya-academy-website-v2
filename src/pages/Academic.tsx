@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import PageHero from '@/components/PageHero';
+import aboutHero from '@/assets/about-hero.jpg';
 import principalImg from '@/assets/principal.jpg';
 import advisorImg from '@/assets/advisor.jpg';
 
@@ -22,6 +24,8 @@ const Academic = () => {
 
   return (
     <>
+      <PageHero title="Academic" subtitle="Leadership Messages" bgImage={aboutHero} />
+
       <section className="section-padding">
         <div className="container-main max-w-4xl">
           <div className="flex justify-center gap-2 mb-10">

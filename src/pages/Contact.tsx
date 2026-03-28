@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import PageHero from '@/components/PageHero';
+import aboutHero from '@/assets/about-hero.jpg';
 
 const Contact = () => {
   useScrollReveal();
@@ -14,6 +16,7 @@ const Contact = () => {
 
   return (
     <>
+      <PageHero title="Contact Us" subtitle="Get In Touch" bgImage={aboutHero} />
 
       <section className="section-padding">
         <div className="container-main">

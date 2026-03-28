@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { FlaskConical, Palette, Briefcase, Target, BookOpen } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import PageHero from '@/components/PageHero';
+import aboutHero from '@/assets/about-hero.jpg';
 
 const compulsory = ['English', 'Assamese / Alt English', 'Environmental Education'];
 
@@ -17,6 +19,7 @@ const Courses = () => {
 
   return (
     <>
+      <PageHero title="Courses" subtitle="Explore Our Streams" bgImage={aboutHero} />
 
       <section className="section-padding">
         <div className="container-main">

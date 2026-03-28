@@ -1,10 +1,13 @@
 import { Eye, Heart } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import PageHero from '@/components/PageHero';
+import aboutHero from '@/assets/about-hero.jpg';
 
 const About = () => {
   useScrollReveal();
   return (
     <>
+      <PageHero title="About Us" subtitle="Discover Our Story" bgImage={aboutHero} />
 
       <section className="section-padding">
         <div className="container-main max-w-3xl text-center scroll-reveal">
