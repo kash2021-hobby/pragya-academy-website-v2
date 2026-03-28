@@ -268,8 +268,6 @@ const Gallery = () => {
 
   return (
     <>
-      <PageHero title="Gallery" subtitle="Moments & Memories" bgImage={aboutHero} />
-
       <section className="section-padding">
         <div className="container-main">
           {/* Grid */}
