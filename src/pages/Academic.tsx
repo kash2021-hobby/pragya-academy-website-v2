@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 import PageHero from '@/components/PageHero';
 import aboutHero from '@/assets/about-hero.jpg';
 import principalImg from '@/assets/principal.jpg';
@@ -9,7 +8,6 @@ import advisorImg from '@/assets/advisor.jpg';
 const tabs = ['Principal', 'Advisor'];
 
 const Academic = () => {
-  useScrollReveal();
   const [searchParams, setSearchParams] = useSearchParams();
   const tabParam = searchParams.get('tab');
   const activeTab = tabParam === 'advisor' ? 1 : 0;
@@ -35,7 +33,7 @@ const Academic = () => {
               <button
                 key={tab}
                 onClick={() => handleTabChange(i)}
-                className={`px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                className={`px-6 py-3 rounded-xl font-semibold text-sm transition-colors ${
                   activeTab === i ? 'bg-orange text-primary-foreground shadow-lg' : 'bg-secondary text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -44,8 +42,8 @@ const Academic = () => {
             ))}
           </div>
 
-          {activeTab === 0 && (
-            <div className="scroll-reveal bg-card rounded-xl shadow-lg p-6 md:p-10">
+          {activeTab === 0 ? (
+            <div key="principal" className="bg-card rounded-xl shadow-lg p-6 md:p-10">
               <div className="flex flex-col md:flex-row gap-8">
                 <div className="md:w-1/3 shrink-0">
                   <img src={principalImg} alt="Principal" className="rounded-xl shadow-md w-full max-w-[250px] mx-auto" />
@@ -67,10 +65,8 @@ const Academic = () => {
                 </div>
               </div>
             </div>
-          )}
-
-          {activeTab === 1 && (
-            <div className="scroll-reveal bg-card rounded-xl shadow-lg p-6 md:p-10">
+          ) : (
+            <div key="advisor" className="bg-card rounded-xl shadow-lg p-6 md:p-10">
               <div className="flex flex-col md:flex-row gap-8">
                 <div className="md:w-1/3 shrink-0">
                   <img src={advisorImg} alt="Advisor" className="rounded-xl shadow-md w-full max-w-[250px] mx-auto" />
