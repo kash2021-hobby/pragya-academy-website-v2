@@ -300,7 +300,8 @@ const Gallery = () => {
       {/* Enhanced Lightbox with Swipe Navigation */}
       {lightboxIndex !== null && (
         <div 
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+          className="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-4"
+          onClick={closeLightbox}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
@@ -308,8 +309,11 @@ const Gallery = () => {
           {/* Close button */}
           <button
             type="button"
-            className="fixed top-6 right-6 z-[60] inline-flex items-center gap-2 rounded-full border border-border bg-background/90 text-foreground px-4 py-2 shadow-lg backdrop-blur-sm transition-opacity hover:opacity-90"
-            onClick={closeLightbox}
+            className="fixed top-[calc(env(safe-area-inset-top)+0.75rem)] right-4 z-[210] inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 text-white px-4 py-2 shadow-lg backdrop-blur-sm transition-opacity hover:bg-black/90"
+            onClick={(e) => {
+              e.stopPropagation();
+              closeLightbox();
+            }}
             aria-label="Close lightbox"
           >
             <X size={20} />
@@ -318,7 +322,7 @@ const Gallery = () => {
 
           {/* Previous button */}
           <button 
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white hover:text-orange transition-colors p-2 bg-black/50 rounded-full hover:bg-black/70"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-[210] text-white hover:text-orange transition-colors p-2 bg-black/50 rounded-full hover:bg-black/70"
             onClick={(e) => {
               e.stopPropagation();
               goToPrevious();
@@ -330,7 +334,7 @@ const Gallery = () => {
 
           {/* Next button */}
           <button 
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white hover:text-orange transition-colors p-2 bg-black/50 rounded-full hover:bg-black/70"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-[210] text-white hover:text-orange transition-colors p-2 bg-black/50 rounded-full hover:bg-black/70"
             onClick={(e) => {
               e.stopPropagation();
               goToNext();
@@ -341,7 +345,10 @@ const Gallery = () => {
           </button>
 
           {/* Image */}
-          <div className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center">
+          <div 
+            className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
             <img 
               src={images[lightboxIndex].src} 
               alt={`Gallery image ${lightboxIndex + 1}`}
@@ -350,7 +357,7 @@ const Gallery = () => {
           </div>
 
           {/* Image counter */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white bg-black/50 px-4 py-2 rounded-full text-sm">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-[210] text-white bg-black/50 px-4 py-2 rounded-full text-sm">
             {lightboxIndex + 1} / {images.length}
           </div>
         </div>
