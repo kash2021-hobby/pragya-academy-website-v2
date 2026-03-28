@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import PageHero from '@/components/PageHero';
-import aboutHero from '@/assets/about-hero.jpg';
 
 const Contact = () => {
   useScrollReveal();
