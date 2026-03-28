@@ -43,7 +43,7 @@ const PageHero = ({ title, subtitle, bgImage, bgImages, textOnly }: PageHeroProp
         />
       ))}
       <div className="absolute inset-0 bg-navy/75" />
-      <div className="relative text-center text-primary-foreground z-10">
+      <div className="relative text-center text-primary-foreground z-10 bg-black/50 px-8 py-5 rounded-xl">
         <h1 className="font-heading text-4xl md:text-5xl font-bold mb-2">{title}</h1>
         {subtitle && <p className="text-primary-foreground/80 text-lg">{subtitle}</p>}
       </div>
