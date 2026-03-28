@@ -26,7 +26,7 @@ const Academic = () => {
 
   return (
     <>
-      <PageHero title="Academic" subtitle="Leadership Messages" bgImage={aboutHero} />
+      <PageHero title="Academic" subtitle="Leadership Messages" bgImages={[g3, g30, g32]} />
 
       <section className="section-padding">
         <div className="container-main max-w-4xl">

@@ -47,7 +47,7 @@ const Faculties = () => {
   useScrollReveal();
   return (
     <>
-      <PageHero title="Our Faculties" subtitle="Meet Our Dedicated Team" bgImage={aboutHero} />
+      <PageHero title="Our Faculties" subtitle="Meet Our Dedicated Team" textOnly />
 
       <section className="section-padding">
         <div className="container-main">

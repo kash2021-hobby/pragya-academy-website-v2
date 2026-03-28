@@ -9,7 +9,7 @@ const About = () => {
   useScrollReveal();
   return (
     <>
-      <PageHero title="About Us" subtitle="Discover Our Story" bgImage={aboutHero} />
+      <PageHero title="About Us" subtitle="Discover Our Story" bgImages={[g19, g24, g4]} />
 
       <section className="section-padding">
         <div className="container-main max-w-3xl text-center scroll-reveal">

@@ -14,8 +14,6 @@ const Contact = () => {
 
   return (
     <>
-      <PageHero title="Contact Us" subtitle="Get In Touch" bgImage={aboutHero} />
-
       <section className="section-padding">
         <div className="container-main">
           <div className="grid lg:grid-cols-5 gap-8">

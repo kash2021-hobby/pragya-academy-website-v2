@@ -21,7 +21,7 @@ const Courses = () => {
 
   return (
     <>
-      <PageHero title="Courses" subtitle="Explore Our Streams" bgImage={aboutHero} />
+      <PageHero title="Courses" subtitle="Explore Our Streams" bgImages={[g44, g45, g64]} />
 
       <section className="section-padding">
         <div className="container-main">

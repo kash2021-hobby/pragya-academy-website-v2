@@ -269,7 +269,7 @@ const Gallery = () => {
 
   return (
     <>
-      <PageHero title="Gallery" subtitle="Moments & Memories" bgImage={aboutHero} />
+      <PageHero title="Gallery" subtitle="Moments & Memories" textOnly />
 
       <section className="section-padding">
         <div className="container-main">
