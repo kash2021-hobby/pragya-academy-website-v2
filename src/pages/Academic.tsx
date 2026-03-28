@@ -5,7 +5,7 @@ import g3 from '@/assets/gallery-3.webp';
 import g30 from '@/assets/gallery-30.webp';
 import g32 from '@/assets/gallery-32.webp';
 const principalImg = "/lovable-uploads/69e94296-77e0-4173-8474-f89799bcec6a.webp";
-import advisorImg from '@/assets/advisor.jpg';
+const advisorImg = "/lovable-uploads/529c88e4-29f1-4674-a328-446a4813ba99.webp";
 
 const tabs = ['Principal', 'Advisor'];
 
