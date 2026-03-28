@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { FlaskConical, Palette, Briefcase, Target, BookOpen } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import PageHero from '@/components/PageHero';
-import aboutHero from '@/assets/about-hero.jpg';
+import g44 from '@/assets/gallery-44.webp';
+import g45 from '@/assets/gallery-45.webp';
+import g64 from '@/assets/gallery-64.webp';
 
 const compulsory = ['English', 'Assamese / Alt English', 'Environmental Education'];
 
@@ -19,7 +21,7 @@ const Courses = () => {
 
   return (
     <>
-      <PageHero title="Courses" subtitle="Explore Our Streams" bgImage={aboutHero} />
+      <PageHero title="Courses" subtitle="Explore Our Streams" bgImages={[g44, g45, g64]} />
 
       <section className="section-padding">
         <div className="container-main">

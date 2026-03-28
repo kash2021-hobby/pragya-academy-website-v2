@@ -1,6 +1,5 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import PageHero from '@/components/PageHero';
-import aboutHero from '@/assets/about-hero.jpg';
 import { User } from 'lucide-react';
 import mukutKalitaImg from '@/assets/mukut-kalita.webp';
 import placeholder1 from '@/assets/faculty-placeholder-1.webp';
@@ -48,7 +47,7 @@ const Faculties = () => {
   useScrollReveal();
   return (
     <>
-      <PageHero title="Our Faculties" subtitle="Meet Our Dedicated Team" bgImage={aboutHero} />
+      <PageHero title="Our Faculties" subtitle="Meet Our Dedicated Team" textOnly />
 
       <section className="section-padding">
         <div className="container-main">

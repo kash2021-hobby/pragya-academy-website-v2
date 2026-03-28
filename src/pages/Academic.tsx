@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PageHero from '@/components/PageHero';
-import aboutHero from '@/assets/about-hero.jpg';
+import g3 from '@/assets/gallery-3.webp';
+import g30 from '@/assets/gallery-30.webp';
+import g32 from '@/assets/gallery-32.webp';
 import principalImg from '@/assets/principal.jpg';
 import advisorImg from '@/assets/advisor.jpg';
 
@@ -24,7 +26,7 @@ const Academic = () => {
 
   return (
     <>
-      <PageHero title="Academic" subtitle="Leadership Messages" bgImage={aboutHero} />
+      <PageHero title="Academic" subtitle="Leadership Messages" bgImages={[g3, g30, g32]} />
 
       <section className="section-padding">
         <div className="container-main max-w-4xl">
