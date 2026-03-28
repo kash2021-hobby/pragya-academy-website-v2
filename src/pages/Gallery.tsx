@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import PageHero from '@/components/PageHero';
-import aboutHero from '@/assets/about-hero.jpg';
 import gallery1 from '@/assets/gallery-1.webp';
 import gallery2 from '@/assets/gallery-2.webp';
 import gallery3 from '@/assets/gallery-3.webp';
