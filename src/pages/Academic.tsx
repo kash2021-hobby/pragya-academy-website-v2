@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import PageHero from '@/components/PageHero';
-import aboutHero from '@/assets/about-hero.jpg';
 import principalImg from '@/assets/principal.jpg';
 import advisorImg from '@/assets/advisor.jpg';
 
