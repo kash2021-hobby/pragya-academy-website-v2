@@ -4,8 +4,8 @@ import PageHero from '@/components/PageHero';
 import g3 from '@/assets/gallery-3.webp';
 import g30 from '@/assets/gallery-30.webp';
 import g32 from '@/assets/gallery-32.webp';
-import principalImg from '@/assets/principal.jpg';
-import advisorImg from '@/assets/advisor.jpg';
+import principalImg from '@/assets/imgi_3_principal.webp';
+import advisorImg from '@/assets/imgi_7_advisor.webp';
 
 const tabs = ['Principal', 'Advisor'];
 
