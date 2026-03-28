@@ -306,12 +306,14 @@ const Gallery = () => {
           onTouchEnd={onTouchEnd}
         >
           {/* Close button */}
-          <button 
-            className="absolute top-4 right-4 z-10 text-white hover:text-orange transition-colors p-3 bg-black/60 rounded-full hover:bg-black/80 backdrop-blur-sm border border-white/20" 
+          <button
+            type="button"
+            className="fixed top-6 right-6 z-[60] inline-flex items-center gap-2 rounded-full border border-border bg-background/90 text-foreground px-4 py-2 shadow-lg backdrop-blur-sm transition-opacity hover:opacity-90"
             onClick={closeLightbox}
             aria-label="Close lightbox"
           >
-            <X size={28} />
+            <X size={20} />
+            <span className="text-sm font-medium">Close</span>
           </button>
 
           {/* Previous button */}
