@@ -307,11 +307,11 @@ const Gallery = () => {
         >
           {/* Close button */}
           <button 
-            className="absolute top-4 right-4 z-10 text-white hover:text-orange transition-colors p-2" 
+            className="absolute top-4 right-4 z-10 text-white hover:text-orange transition-colors p-3 bg-black/60 rounded-full hover:bg-black/80 backdrop-blur-sm border border-white/20" 
             onClick={closeLightbox}
             aria-label="Close lightbox"
           >
-            <X size={32} />
+            <X size={28} />
           </button>
 
           {/* Previous button */}
