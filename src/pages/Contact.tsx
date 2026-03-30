@@ -27,9 +27,10 @@ const Contact = () => {
       ? `\nCourse: ${form.course}${form.integratedSubject ? ` (${form.integratedSubject})` : ''}`
       : '';
 
-    const body = `Name: ${form.name}\nEmail: ${form.email}${courseInfo}\n\nSubject: ${form.subject}\n\nMessage:\n${form.message}`;
+    const subject = `Contact from ${form.name}`;
+    const body = `Name: ${form.name}\nEmail: ${form.email}${courseInfo}\n\nMessage:\n${form.message}`;
 
-    const mailtoLink = `mailto:kashyapnandan2021@gmail.com?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:kashyapnandan2021@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(mailtoLink, '_blank');
 
     setTimeout(() => {
