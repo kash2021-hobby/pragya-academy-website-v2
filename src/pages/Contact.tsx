@@ -36,7 +36,7 @@ const Contact = () => {
     setTimeout(() => {
       setSending(false);
       alert('Your email client should have opened. Please send the email to complete your message.');
-      setForm({ name: '', email: '', subject: '', message: '', course: '', integratedSubject: '' });
+      setForm({ name: '', email: '', message: '', course: '', integratedSubject: '' });
     }, 500);
   };
 
