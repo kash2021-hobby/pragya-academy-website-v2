@@ -20,25 +20,33 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
 
     const courseInfo = form.course
-      ? `\nCourse: ${form.course}${form.integratedSubject ? ` (${form.integratedSubject})` : ''}`
-      : '';
+      ? `${form.course}${form.integratedSubject ? ` (${form.integratedSubject})` : ''}`
+      : 'Not specified';
 
-    const subject = `Contact from ${form.name}`;
-    const body = `Name: ${form.name}\nEmail: ${form.email}${courseInfo}\n\nMessage:\n${form.message}`;
-
-    const mailtoLink = `mailto:kashyapnandan2021@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoLink, '_blank');
-
-    setTimeout(() => {
-      setSending(false);
-      alert('Your email client should have opened. Please send the email to complete your message.');
+    try {
+      await emailjs.send(
+        'pragya-academy',
+        'template_vnc7v4f',
+        {
+          name: form.name,
+          time: new Date().toLocaleString(),
+          message: `Email: ${form.email}\nCourse: ${courseInfo}\n\n${form.message}`,
+        },
+        'zuS9TdL9EYCaxoWli'
+      );
+      alert('Message sent successfully!');
       setForm({ name: '', email: '', message: '', course: '', integratedSubject: '' });
-    }, 500);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      alert('Failed to send message. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
