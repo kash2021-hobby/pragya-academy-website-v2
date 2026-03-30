@@ -8,7 +8,7 @@ const integratedSubjects = ['NEET', 'JEE', 'CUET', 'CEE'];
 
 const Contact = () => {
   useScrollReveal();
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '', course: '', integratedSubject: '' });
+  const [form, setForm] = useState({ name: '', email: '', message: '', course: '', integratedSubject: '' });
   const [sending, setSending] = useState(false);
 
   const handleCourseChange = (value: string) => {
