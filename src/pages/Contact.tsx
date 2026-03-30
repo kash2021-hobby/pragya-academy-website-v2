@@ -51,7 +51,6 @@ const Contact = () => {
                 {[
                   { key: 'name', label: 'Full Name', type: 'text' },
                   { key: 'email', label: 'Email Address', type: 'email' },
-                  { key: 'subject', label: 'Subject', type: 'text' },
                 ].map((field) => (
                   <div key={field.key} className="relative">
                     <input
