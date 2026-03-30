@@ -1,15 +1,42 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
+const courses = ['Science', 'Arts', 'Commerce', 'Integrated Programme'];
+const integratedSubjects = ['NEET', 'JEE', 'CUET', 'CEE'];
 
 const Contact = () => {
   useScrollReveal();
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '', course: '', integratedSubject: '' });
+  const [sending, setSending] = useState(false);
+
+  const handleCourseChange = (value: string) => {
+    setForm((prev) => ({
+      ...prev,
+      course: value,
+      integratedSubject: value === 'Integrated Programme' ? prev.integratedSubject : '',
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your message! We will get back to you soon.');
-    setForm({ name: '', email: '', subject: '', message: '' });
+    setSending(true);
+
+    const courseInfo = form.course
+      ? `\nCourse: ${form.course}${form.integratedSubject ? ` (${form.integratedSubject})` : ''}`
+      : '';
+
+    const body = `Name: ${form.name}\nEmail: ${form.email}${courseInfo}\n\nSubject: ${form.subject}\n\nMessage:\n${form.message}`;
+
+    const mailtoLink = `mailto:kashyapnandan2021@gmail.com?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoLink, '_blank');
+
+    setTimeout(() => {
+      setSending(false);
+      alert('Your email client should have opened. Please send the email to complete your message.');
+      setForm({ name: '', email: '', subject: '', message: '', course: '', integratedSubject: '' });
+    }, 500);
   };
 
   return (
@@ -37,6 +64,33 @@ const Contact = () => {
                     />
                   </div>
                 ))}
+
+                {/* Course Dropdown */}
+                <Select value={form.course} onValueChange={handleCourseChange}>
+                  <SelectTrigger className="w-full px-4 py-3.5 h-auto rounded-xl border border-border bg-background text-foreground text-sm focus:ring-2 focus:ring-orange focus:ring-offset-0">
+                    <SelectValue placeholder="Select Course" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {courses.map((c) => (
+                      <SelectItem key={c} value={c}>{c}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                {/* Integrated Programme Subject Dropdown */}
+                {form.course === 'Integrated Programme' && (
+                  <Select value={form.integratedSubject} onValueChange={(v) => setForm({ ...form, integratedSubject: v })}>
+                    <SelectTrigger className="w-full px-4 py-3.5 h-auto rounded-xl border border-border bg-background text-foreground text-sm focus:ring-2 focus:ring-orange focus:ring-offset-0">
+                      <SelectValue placeholder="Select Subject" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {integratedSubjects.map((s) => (
+                        <SelectItem key={s} value={s}>{s}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
+
                 <textarea
                   required
                   rows={5}
@@ -45,8 +99,8 @@ const Contact = () => {
                   placeholder="Your Message"
                   className="w-full px-4 py-3.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent transition-all placeholder:text-muted-foreground resize-none"
                 />
-                <button type="submit" className="btn-orange flex items-center gap-2">
-                  <Send size={18} /> Send Message
+                <button type="submit" disabled={sending} className="btn-orange flex items-center gap-2">
+                  <Send size={18} /> {sending ? 'Opening...' : 'Send Message'}
                 </button>
               </form>
             </div>
